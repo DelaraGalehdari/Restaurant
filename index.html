@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Food Website</title>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+	<link rel="stylesheet" href="css/style.css">
+	<link rel="preconnect" href="https://fonts.gstatic.com">
+	<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500&family=Roboto:wght@300&display=swap" rel="stylesheet">
+	<script src="js/script.js" async></script>
+	<script src="./index.js" async></script>
+	<script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
+	<script src="https://unpkg.com/ionicons@5.4.0/dist/ionicons.js"></script>
+	<script>
+		$(document).ready(function() {
+
+			$('#menu-bar').click(function() {
+				$(this).toggleClass('fa-times');
+				$('.navbar').toggleClass('nav-toggle');
+			});
+
+			$(window).on('load scroll', function() {
+
+				$('#menu-bar').removeClass('fa-times');
+				$('.navbar').removeClass('nav-toggle');
+
+				$('section').each(function() {
+
+					let top = $(window).scrollTop();
+					let height = $(this).height();
+					let id = $(this).attr('id');
+					let offset = $(this).offset().top - 200;
+
+					if (top > offset && top < offset + height) {
+						$('.navbar ul li a').removeClass('active');
+						$('.navbar').find(`[href="#${id}"]`).addClass('active');
+					}
+
+				});
+
+			});
+
+			$('.list .btn').click(function() {
+				$(this).addClass('active').siblings().removeClass('active');
+				let src = $(this).attr('data-src');
+				$('.menu .row .image img').attr('src', src);
+			});
+
+		});
+
+	</script>
+</head>
+
+<body>
+	<header>
+		<link rel="shortcut icon" href="#">
+		<a href="#home" class="logo"><img src="images/logo.png" alt="logo image"></a>
+		<div id="menu-bar" class="fas fa-hamburger"></div>
+
+
+		<nav class="navbar">
+			<ul>
+				<li><a class="active" href="#home">home</a></li>
+				<li><a href="#about">about</a></li>
+				<li><a href="#menu">menu</a></li>
+				<li><a href="#popular">popular</a></li>
+				<li><a href="#gallery">gallery</a></li>
+				<!--				<li><a href="#order">order</a></li>-->
+				<li><a href="#cart">
+						<ion-icon name="cart-outline"></ion-icon>
+					</a></li><span class="cart"> 0</span>
+			</ul>
+		</nav>
+	</header>
+
+	<!--    home part-->
+	<section class="home" id="home">
+		<div class="content" data-aos="fade-right">
+			<h3>We belive that good food make you happy</h3>
+			<p>Happy resutaurant offers selection of best food around the world with best quality and taste!</p>
+			<a href="#menu"><button class="btn">get started</button></a>
+		</div>
+		<div class="image" data-aos="fade-up">
+			<img src=" images/home-img.png" alt="food image">
+		</div>
+
+	</section>
+
+	<!--    about part-->
+	<section class="about" id="about">
+		<div class="image" data-aos="fade-right"></div>
+		<div class="content" data-aos="fade-left">
+			<h3>a word about us</h3>
+			<p>Happy restaurant works with best international chefs try to make all of its customers with different taste happy.</p>
+			<p>Happy restaurant is a new contemporary international Restaurant serving a range of Canadian, Persian, South Asian,Mexican,Italian,Indian foods and other eastern dishes, fresh salads and sweets. At happy restaurant savor our kabobs, marinated with herbs and spices, broiled with fresh onions and peppers, and served with rice and your choice of salad. Choose from our selection of Vegetarian dishes, all cooked with fresh sauces and herbs, and served with flavored rice and salad.</p>
+			<a href="#gallery"><button class="btn">learn more</button></a>
+		</div>
+
+	</section>
+	<!--    menu section-->
+	<section class="menu" id="menu">
+
+		<h1 class="heading"> our delicious <span> menu </span> </h1>
+
+		<ul class="list" data-aos="fade-down">
+			<li class="btn" onclick="change_text1()" data-src="images/menu1.jpg">breakfast</li>
+			<li class="btn active" onclick="change_text2()" data-src="images/menu2.jpg">lunch</li>
+			<li class="btn" onclick="change_text3()" data-src="images/menu3.jpg">dinner</li>
+			<li class="btn" onclick="change_text4()" data-src="images/menu4.jpg">dessert</li>
+		</ul>
+
+		<div class="row" data-aos="fade-right">
+
+			<div class="image" data-aos="fade-left">
+				<img src="images/menu2.jpg" id="menu-img" alt="">
+			</div>
+
+			<div id="content">
+
+			</div>
+
+		</div>
+
+	</section>
+
+	<!--    popular section-->
+	<section class="popular" id="popular">
+		<h1 class="heading"> most <span>popular</span> foods </h1>
+		<div class="box-container">
+			<div class="box" data-aos="fade-right">
+				<img src="images/steak.jpg" alt="popular food image">
+				<h3>Steak</h3>
+				<div class="stars">
+					<i class="fas fa-star"></i>
+					<i class="fas fa-star"></i>
+					<i class="fas fa-star"></i>
+					<i class="fas fa-star"></i>
+					<i class="fas fa-star"></i>
+				</div>
+				<div class="price">$30.00</div>
+				<a href="#"><button class="btn add-cart">add to cart</button></a>
+			</div>
+			<div class="box" data-aos="fade-left">
+				<img src="images/grilledfish.jpg" alt="popular food image">
+				<h3>Grilled Fish</h3>
+				<div class="stars">
+					<i class="fas fa-star"></i>
+					<i class="fas fa-star"></i>
+					<i class="fas fa-star"></i>
+					<i class="fas fa-star"></i>
+					<i class="fas fa-star"></i>
+				</div>
+				<div class="price">$25.00</div>
+				<a href="#"><button class="btn add-cart">add to cart</button></a>
+			</div>
+			<div class="box" data-aos="fade-right">
+				<img src="images/persiankabab.jpg" alt="popular food image">
+				<h3>Persian Kabab</h3>
+				<div class="stars">
+					<i class="fas fa-star"></i>
+					<i class="fas fa-star"></i>
+					<i class="fas fa-star"></i>
+					<i class="fas fa-star"></i>
+					<i class="fas fa-star"></i>
+				</div>
+				<div class="price">$45.00</div>
+				<a href="#"><button class="btn add-cart">add to cart</button></a>
+			</div>
+			<div class="box" data-aos="fade-left">
+				<img src="images/tiramisu.jpg" alt="popular food image">
+				<h3>Tiramisu</h3>
+				<div class="stars">
+					<i class="fas fa-star"></i>
+					<i class="fas fa-star"></i>
+					<i class="fas fa-star"></i>
+					<i class="fas fa-star"></i>
+					<i class="fas fa-star"></i>
+				</div>
+				<div class="price">$18.00</div>
+				<a href="#"><button class="btn add-cart">add to cart</button></a>
+			</div>
+			<div class="box" data-aos="fade-right">
+				<img src="images/Waffleswithice-cream.jpg" alt="popular food image">
+				<h3>Waffles with ice-cream</h3>
+				<div class="stars">
+					<i class="fas fa-star"></i>
+					<i class="fas fa-star"></i>
+					<i class="fas fa-star"></i>
+					<i class="fas fa-star"></i>
+					<i class="fas fa-star"></i>
+				</div>
+				<div class="price">$15.00</div>
+				<a href="#"><button class="btn add-cart">add to cart</button></a>
+			</div>
+			<div class="box" data-aos="fade-left">
+				<img src="images/Waffleswithfruits.jpg" alt="popular food image">
+				<h3>Waffles with fruits</h3>
+				<div class="stars">
+					<i class="fas fa-star"></i>
+					<i class="fas fa-star"></i>
+					<i class="fas fa-star"></i>
+					<i class="fas fa-star"></i>
+					<i class="fas fa-star"></i>
+				</div>
+				<div class="price">$15.00</div>
+				<a href="#"><button class="btn add-cart">add to cart</button></a>
+			</div>
+		</div>
+	</section>
+	<!--Gallery section-->
+	<section class="gallery" id="gallery">
+
+		<h1 class="heading"> our food <span>gallery</span> </h1>
+
+		<div class="box-container">
+
+			<div class="box" data-aos="fade-up">
+				<img src="images/img1.jpg" alt="">
+				<h3>Persian Kabab</h3>
+			</div>
+
+			<div class="box" data-aos="fade-up">
+				<img src="images/img2.jpg" alt="">
+				<h3>Barbeque Chicken</h3>
+			</div>
+
+			<div class="box" data-aos="fade-up">
+				<img src="images/img3.jpg" alt="">
+				<h3>Eggs & Spinach</h3>
+			</div>
+
+			<div class="box" data-aos="fade-up">
+				<img src="images/img4.jpg" alt="">
+				<h3>International Breakfast</h3>
+			</div>
+
+			<div class="box" data-aos="fade-up">
+				<img src="images/img5.jpg" alt="">
+				<h3>Grilled Shrimp</h3>
+			</div>
+
+			<div class="box" data-aos="fade-up">
+				<img src="images/img6.jpg" alt="">
+				<h3>Grilled Fish</h3>
+			</div>
+
+		</div>
+
+	</section>
+	<!--    order section-->
+	<!--
+	<section class="order" id="order">
+		<h1 class="heading"> make an <span>order</span> </h1>
+		<div class="row">
+			<form action="" data-aos="fade-right">
+				<input type="text" placeholder="your name" class="box">
+				<input type="email" placeholder="your email" class="box">
+				<input type="password" placeholder="your password" class="box">
+				<input type="number" placeholder="your number" class="box">
+				<textarea name="" id="" cols="30" rows="10" class="box address" placeholder="your address"></textarea>
+				<input type="submit" value="order now" class="btn">
+			</form>
+			<div class="image" data-aos="fade-left">
+				<img src="images/form-img.png" alt="">
+			</div>
+
+		</div>
+	</section>
+-->
+	<!--    cart section-->
+
+	<div class="container">
+		<h1 class="heading"> your <span> cart </span> </h1>
+		<div class="cart" id="cart">
+			<div class="products" data-aos="fade-right">
+
+			</div>
+			<div class="cart_total" data-aos="fade-left">
+				<div class="formPayment"></div>
+				<form action="payment" method="POST">
+
+
+					<script type="text/javascript" src="//checkout.stripe.com/v2/checkout.js" class="stripe-button" data-key="<%= key %>" data-amount="" data-currency="cad" data-name="Happy Restaurant Payment" data-description="Complete your transaction" data-locale="auto">
+
+					</script>
+
+
+
+				</form>
+			</div>
+
+		</div>
+	</div>
+
+	<!--
+		<div class="shopping-cart">
+			<div class="column-labels">
+				<label class="product-image">Image</label>
+				<label class="product-details">Product</label>
+				<label class="product-price">Price</label>
+				<label class="product-quantity">Quantity</label>
+				<label class="product-removal">Remove</label>
+				<label class="product-line-price">Total</label>
+			</div>
+-->
+
+
+
+
+
+	<!--
+		<div class="products-container">
+			<div class="products-header">
+				<h5 class="products-title">product</h5>
+				<h5 class="price">price</h5>
+				<h5 class="quantity">quantity</h5>
+				<h5 class="total">total</h5>
+			</div>
+			<div class="products"></div>
+
+		</div>
+-->
+
+
+
+	<!--    footer section-->
+	<div class="footer">
+		<div class=box-container>
+			<div class="box">
+				<h3>contact info</h3>
+				<p> <i class="fas fa-map-marker-alt"></i> 000 University Ave, Waterloo </p>
+				<p> <i class="fas fa-envelope"></i> delara.gi@gmail.com </p>
+				<p> <i class="fas fa-phone"></i> +123 456 789 </p>
+				<p> <i class="fas fa-phone"></i> +111-222-333 </p>
+			</div>
+			<div class="box">
+				<h3>branch location</h3>
+				<a hreh="#">Canada</a>
+				<a hreh="#">USA</a>
+				<a hreh="#">IRAN</a>
+				<a hreh="#">Dubai</a>
+
+
+			</div>
+			<div class="box">
+				<h3>quick links</h3>
+				<a href="#home">home</a>
+				<a href="#about">about</a>
+				<a href="#menu">menu</a>
+				<a href="#popular">popular</a>
+				<a href="#gallery">gallery</a>
+				<a href="#cart">order</a>
+
+			</div>
+			<div class="box">
+				<h3>follow us</h3>
+				<a hreh="#">instagram</a>
+				<a hreh="#">facebook</a>
+				<a hreh="#">twitter</a>
+				<a hreh="#">linkedin</a>
+
+
+			</div>
+		</div>
+		<h1 class="credit">create by : <a href="#"> Delara Galehdari </a> all rights reserved.</h1>
+	</div>
+
+
+
+
+
+
+	<script src="https://unpkg.com/ionicons@5.4.0/dist/ionicons.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+
+	<!--    aos initializing-->
+	<script>
+		AOS.init({
+			delay: 400,
+			duration: 1000
+		})
+
+	</script>
+
+</body>
+
+</html>
